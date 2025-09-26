@@ -1,6 +1,9 @@
 ![workflow](https://github.com/<camerondear>/<devops>/actions/workflows/main.yml/badge.svg)
+[![LICENSE](https://img.shields.io/github/license/<camerondear>/devops.svg?style=flat-square)](https://github.com/<camerondear>/devops/blob/master/LICENSE)
+[![Releases](https://img.shields.io/github/release/<camerondear>/devops/all.svg?style=flat-square)](https://github.com/<github-username>/devops/releases)
 
 ## READ ME
+
 
 **17/09:**
 
