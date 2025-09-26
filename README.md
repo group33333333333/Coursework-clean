@@ -1,6 +1,7 @@
 ![workflow](https://github.com/<camerondear>/<devops>/actions/workflows/main.yml/badge.svg)
-[![LICENSE](https://img.shields.io/github/license/<camerondear>/devops.svg?style=flat-square)](https://github.com/<camerondear>/devops/blob/master/LICENSE)
-[![Releases](https://img.shields.io/github/release/<camerondear>/devops/all.svg?style=flat-square)](https://github.com/<camerondear>/devops/releases)
+[![LICENSE](https://img.shields.io/github/license/<camerondear>/<devops>.svg?style=flat-square)](https://github.com/<camerondear>/<devops>/master/LICENSE)
+[![Releases](https://img.shields.io/github/release/<camerondear>/<devops>/all.svg?style=flat-square)](https://github.com/<camerondear>/<devops>/releases)
+![GitHub Workflow Status (master)](https://img.shields.io/github/workflow/status/<camerondear>/<devops>/<A workflow for my Hello World App>/<master>?style=flat-square)
 
 ## READ ME
 
