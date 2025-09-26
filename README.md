@@ -1,3 +1,5 @@
+![workflow](https://github.com/<camerondear>/<devops>/actions/workflows/main.yml/badge.svg)
+
 ## READ ME
 
 **17/09:**
