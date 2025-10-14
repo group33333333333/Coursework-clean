@@ -27,6 +27,18 @@ CODE OF CONDUCT
 6. Adhere to health and safety policies at all times.
 7. Adhere to the computer missuse act
 
+
+**USER STORIES**
+
+1. As a member of the group, i want clear and easy tasks to work towards with a due date. therefore we should use a sprint board
+2. As a member of the team, i want to define tasks as user stories. so we can keep focus on the user and what they would like.
+3. As a member of the group, i want to see whats being worked towards with a kanban board
+4. As a user, i want a use case diagram so i can understand the system better
+5. As a user, i want defined use cases so i know how i will be interacting with the system
+6. As a member of the team, i want to integrate issues with github. So if there is an issue we can all know about it and work towards fixing it
+7. As a member of the team, i want to sync zube.io with github so we can work towards issues and items in the backlog clearly
+
+
 SCRUM METHOD for code review 2 week 6
 
 Back log: 
