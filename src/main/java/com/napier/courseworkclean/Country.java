@@ -49,3 +49,4 @@ public class Country
     /** Property representing Country's 2-letter code  **/
     public String code2;
 }
+
