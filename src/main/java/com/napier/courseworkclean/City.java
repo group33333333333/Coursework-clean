@@ -22,4 +22,3 @@ public class City {
     public String citypopulation;
 
 }
-
