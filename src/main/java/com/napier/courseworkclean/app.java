@@ -180,7 +180,7 @@ public class app {
                 System.out.println("About to display " + countries.size() + " countries \n");
 
                 // Prints a header with spacing prior to printing results of SQL query
-                System.out.println(String.format("%-50s %-25s %-25s", "Emp No", "First Name", "Last Name \n"));
+                System.out.println(String.format("%-50s %-25s %-25s", "Country", "Continent", "Region \n"));
                 // Loop over all employees in the list
                 for (Country country : countries)
                 {
