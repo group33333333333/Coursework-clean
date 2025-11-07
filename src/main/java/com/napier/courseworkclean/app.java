@@ -31,9 +31,7 @@ public class app {
 
         // Calls displayCountries method when passed ArrayList<Country> 'countries'
         // ArrayList is iterated through a for loop of ArrayList length and printed
-        // Calculates ArrayList size and prints
         a.displayCountries(countries);
-        System.out.println("Number of countries: " + countries.size());
 
 
         // Prints entire ArrayList<Country> 'countries'
@@ -179,13 +177,19 @@ public class app {
     public void displayCountries(ArrayList<Country> countries) {
         try {
             if (countries != null) {
-                System.out.println("About to display " + countries.size() + " countries");
-                int size = countries.size();
-                for (int i = 0; i < size; i++) {
-                    Country country = countries.get(i);
-                    System.out.println(country.name + " " + country.continent);
+                System.out.println("About to display " + countries.size() + " countries \n");
+
+                // Prints a header with spacing prior to printing results of SQL query
+                System.out.println(String.format("%-50s %-25s %-25s", "Emp No", "First Name", "Last Name \n"));
+                // Loop over all employees in the list
+                for (Country country : countries)
+                {
+                    String country_string =
+                            String.format("%-50s %-25s %-25s",
+                                    country.name, country.continent, country.region);
+                    System.out.println(country_string);
                 }
-                System.out.println("Finished displaying countries");
+                System.out.println("\nFinished displaying " + countries.size() + " countries");
             } else {
                 System.out.println("Countries list is NULL!");
             }
