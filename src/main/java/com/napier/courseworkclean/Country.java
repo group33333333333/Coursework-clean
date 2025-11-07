@@ -4,7 +4,7 @@ package com.napier.courseworkclean;
 public class Country
 {
 
-    /** Property representing Country's  3-letter code **/
+    /** Property representing Country's 3-letter code **/
     public String code;
 
     /** Property representing Country's name **/
@@ -48,4 +48,27 @@ public class Country
 
     /** Property representing Country's 2-letter code  **/
     public String code2;
+
+    // toString override method
+    // Fixes ArrayList display output
+    @Override
+    public String toString() {
+        return "Country{" +
+                "code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", continent='" + continent + '\'' +
+                ", region='" + region + '\'' +
+                ", surfaceArea=" + surfaceArea +
+                ", indepYear=" + indepYear +
+                ", population=" + population +
+                ", lifeExpectancy=" + lifeExpectancy +
+                ", GNP=" + GNP +
+                ", GNPOld=" + GNPOld +
+                ", localName='" + localName + '\'' +
+                ", govForm='" + govForm + '\'' +
+                ", headOfState='" + headOfState + '\'' +
+                ", capital='" + capital + '\'' +
+                ", code2='" + code2 + '\'' +
+                '}';
+    }
 }

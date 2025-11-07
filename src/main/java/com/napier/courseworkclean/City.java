@@ -12,13 +12,22 @@ public class City {
     /** Property representing City's country code **/
     public String countryCode;
 
-    /** Property representing City's **/
-    public String code;
-
     /** Property representing City's district **/
     public String district;
 
     /** Property representing City's population **/
     public String citypopulation;
 
+    // toString override method
+    // Fixes ArrayList display output
+    @Override
+    public String toString() {
+        return "City{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", countryCode='" + countryCode + '\'' +
+                ", district='" + district + '\'' +
+                ", citypopulation='" + citypopulation + '\'' +
+                '}';
+    }
 }
