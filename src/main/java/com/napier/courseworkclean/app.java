@@ -93,12 +93,13 @@ public class app {
         }
     }
 
+
     // Method structure for single result SQL queries
     // Method is passed 'code' variable with value "TWN"
     // String strSelect is created and defined as an SQL query
     // Processes SQL query
     // Returns a single Country object 'country'
-    // In this case, method only prints Name and Population properties but could print more
+    // In this case, method only prints Name and Population properties but could print more if needed
     public Country getCountry(String code) {
         try {
             Statement stmt = con.createStatement();
@@ -141,7 +142,7 @@ public class app {
                             + "ORDER BY Name ASC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
+            // Extract country information into ArrayList<Country>
             ArrayList<Country> countries = new ArrayList<Country>();
             while (rset.next())
             {
@@ -169,6 +170,8 @@ public class app {
             System.out.println(country.name + " " + country.population);
         }
     }
+
+
     // Method to display ArrayList<Country> 'countries'
     // Iterated through for loop to print every row in order
     // Array is already sorted alphabetically by SQL query

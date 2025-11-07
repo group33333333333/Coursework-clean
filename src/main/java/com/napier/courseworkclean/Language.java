@@ -1,6 +1,6 @@
 package com.napier.courseworkclean;
 
-/** Class representing a country's language **/
+/** Class representing a country's language properties **/
 public class Language {
 
     /** Property representing Country's 3-letter code **/
@@ -16,7 +16,7 @@ public class Language {
     public double percentage ;
 
     // toString override method
-    // Fixes ArrayList display output
+    // Fixes ArrayList display output, lists an object's properties instead of memory address
     @Override
     public String toString() {
         return "Language{" +
