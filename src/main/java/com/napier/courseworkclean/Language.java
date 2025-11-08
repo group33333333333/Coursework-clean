@@ -1,4 +1,3 @@
-
 package com.napier.courseworkclean;
 
 /** Class representing a country's language properties **/
