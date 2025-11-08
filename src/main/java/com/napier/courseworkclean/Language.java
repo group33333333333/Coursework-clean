@@ -1,3 +1,4 @@
+
 package com.napier.courseworkclean;
 
 /** Class representing a country's language properties **/
@@ -20,10 +21,17 @@ public class Language {
     @Override
     public String toString() {
         return "Language{" +
-                "countryCode='" + countryCode + '\'' +
+                "code='" + countryCode + '\'' +
                 ", language='" + language + '\'' +
                 ", isOfficial='" + isOfficial + '\'' +
                 ", percentage=" + percentage +
                 '}';
     }
 }
+
+
+
+
+
+
+

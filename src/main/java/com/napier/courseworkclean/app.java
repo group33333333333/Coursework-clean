@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class app {
     // Class-level connection
-    private Connection con = null;
+    public Connection con = null;
 
     public static void main(String[] args) {
 
@@ -14,29 +14,32 @@ public class app {
         app a = new app();
         a.connect();
 
+        // Calls getManyCity method from class CityQueries and returns ArrayList<City> 'cities'
+        // Contains list of City objects and associated properties
+        ArrayList<City> cities = queryCity.getManyCity(a.con);
+        if (cities == null) {
+            System.out.println("Failed to retrieve cities!");
+            return;
+        }
+        // Calls displayCities method when passed ArrayList<City> 'cities'
+        // ArrayList is iterated through a for loop of ArrayList length and printed
+        a.displayCities(cities);
 
-        // Calls getCountry method and returns single object 'country'
-        // Calls displayCountry method and prints values of properties in 'country' object
-        Country country = a.getCountry("TWN");
+        // Call getCountry method from CountryQueries class, passing the connection from app
+        Country country = queryCountry.getCountry("TWN", a.con);
         a.displayCountry(country);
 
 
         // Calls getManyCountry method and returns ArrayList<Country> 'countries'
         // Contains list of Country objects and associated properties
-        ArrayList<Country> countries = a.getManyCountry();
+        ArrayList<Country> countries = queryCountry.getManyCountry(a.con);
         if (countries == null) {
             System.out.println("Failed to retrieve countries!");
             return;
         }
-
         // Calls displayCountries method when passed ArrayList<Country> 'countries'
         // ArrayList is iterated through a for loop of ArrayList length and printed
         a.displayCountries(countries);
-
-
-        // Prints entire ArrayList<Country> 'countries'
-        // Prints on one line, mot ideal
-        System.out.println(countries);
 
 
         // Disconnects from SQL database
@@ -92,73 +95,6 @@ public class app {
     }
 
 
-    // Method structure for single result SQL queries
-    // Method is passed 'code' variable with value "TWN"
-    // String strSelect is created and defined as an SQL query
-    // Processes SQL query
-    // Returns a single Country object 'country'
-    // In this case, method only prints Name and Population properties but could print more if needed
-    public Country getCountry(String code) {
-        try {
-            Statement stmt = con.createStatement();
-            String strSelect =
-                    "SELECT Name, Population " +
-                            "FROM country " +
-                            "WHERE Code = '" + code + "'";
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            if (rset.next()) {
-                Country country = new Country();
-                country.name = rset.getString("Name");
-                country.population = rset.getInt("Population");
-                return country;
-            } else
-                return null;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
-            return null;
-        }
-    }
-
-
-    // Method structure for many result SQL queries
-    // In this case, method is not passed any values but could be if needed
-    // String strSelect is created and defined as an SQL query
-    // Processes SQL query
-    // Returns an ArrayList<Country> called 'countries' with many properties
-    public ArrayList<Country> getManyCountry()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT Name, Continent, Region "
-                            + "FROM country "
-                            + "ORDER BY Name ASC";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information into ArrayList<Country>
-            ArrayList<Country> countries = new ArrayList<Country>();
-            while (rset.next())
-            {
-                Country country = new Country();
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                countries.add(country);
-            }
-            return countries;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
-            return null;
-        }
-    }
 
 
     // Method to display single Country object 'country'
@@ -168,7 +104,6 @@ public class app {
             System.out.println(country.name + " " + country.population);
         }
     }
-
 
     // Method to display ArrayList<Country> 'countries'
     // Iterated through for loop to print every row in order
@@ -180,13 +115,13 @@ public class app {
                 System.out.println("About to display " + countries.size() + " countries \n");
 
                 // Prints a header with spacing prior to printing results of SQL query
-                System.out.println(String.format("%-50s %-25s %-25s", "Country", "Continent", "Region \n"));
+                System.out.println(String.format("%-10s %-50s %-25s %-35s %-25s %-25s" , "Code", "Name", "Continent", "Region", "Population", "Capital \n"));
                 // Loop over all employees in the list
                 for (Country country : countries)
                 {
                     String country_string =
-                            String.format("%-50s %-25s %-25s",
-                                    country.name, country.continent, country.region);
+                            String.format("%-10s %-50s %-25s%-35s %-25s %-25s",
+                                    country.code, country.name, country.continent, country.region, country.population, country.capital);
                     System.out.println(country_string);
                 }
                 System.out.println("\nFinished displaying " + countries.size() + " countries");
@@ -199,6 +134,35 @@ public class app {
         }
     }
 
+    // Method to display ArrayList<City> 'cities'
+    // Iterated through for loop to print every row in order
+    // Array is already sorted alphabetically by SQL query
+    // Prints all cities and exits
+    public void displayCities(ArrayList<City> cities) {
+        try {
+            if (cities != null) {
+                System.out.println("About to display " + cities.size() + " cities \n");
+
+                // Prints a header with spacing prior to printing results of SQL query
+                System.out.println(String.format("%-25s %-10s %-25s %-10s",  "Name", "Country", "District", "Population  \n"));
+
+
+                // Loop over all cities in the list
+                for (City city : cities)
+                {
+                    String country_string =
+                            String.format("%-25s %-10s %-25s %-10s",
+                                    city.name, city.code, city.district, city.citypopulation);
+                    System.out.println(country_string);
+                }
+                System.out.println("\nFinished displaying " + cities.size() + " cities");
+            } else {
+                System.out.println("Cities list is NULL!");
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR in displayCities:");
+            e.printStackTrace();
+        }
+    }
+
 }
-
-
