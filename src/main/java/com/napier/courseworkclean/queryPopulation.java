@@ -7,7 +7,7 @@ public class queryPopulation {
 
 
 
-    // WILL REQUIRE A JOIN SQL QUERY
+    // WILL REQUIRE A JOIN SQL QUERY.
     // JOIN CITY ON COUNTRY WHERE city.name = country.capital
 
 

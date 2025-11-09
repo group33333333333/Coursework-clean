@@ -10,7 +10,7 @@ public class app {
     public static void main(String[] args) {
 
         // Instantiates app container and connects to SQL database
-        // Do not remove!!
+        // Do not remove!!!
         app a = new app();
         a.connect();
 
