@@ -165,4 +165,49 @@ public class app {
         }
     }
 
+    /**
+     * --------------------------------------New for countries by dec pop-------------------------------------------------------------------
+     */
+    // Call the method to get all countries ordered by population descending
+    ArrayList<Country> countriesByPop = queryCountry.getCountriesByPopulationDesc(a.con);
+
+
+    // Check that the query worked
+    if (countriesByPop == null) {
+
+        System.out.println("Failed to retrieve countries by population (descending)!");
+        return;
+    }
+
+    // Display results (you can use your new display method or the existing one)
+    a.displayCountriesByPopulation(countriesByPop);
+
+
+    // Method to display ArrayList<Country> 'countries'
+// Prints only Name and Population, sorted in descending order by SQL query
+    public void displayCountriesByPopulation(ArrayList<Country> countries) {
+        try {
+            if (countries != null) {
+                System.out.println("About to display " + countries.size() + " countries by population (descending)\n");
+
+                System.out.println(String.format("%-50s %-20s", "Country Name", "Population"));
+                System.out.println("-------------------------------------------------------------");
+
+                for (Country country : countries) {
+                    String country_string = String.format("%-50s %-20s", country.name, country.population);
+                    System.out.println(country_string);
+                }
+
+                System.out.println("\nFinished displaying " + countries.size() + " countries by population.");
+            } else {
+                System.out.println("Countries list is NULL!");
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR in displayCountriesByPopulation:");
+            e.printStackTrace();
+        }
+    }
+
+
+
 }
