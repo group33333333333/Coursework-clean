@@ -20,14 +20,19 @@ public class app {
         // Imports scanner for reading user inputs
         Scanner scanner = new Scanner(System.in);
 
+
+        boolean menu = true;
+        while(menu){
+
         // First line of menu
         System.out.println("Welcome to coursework-clean!");
-        System.out.println("Which reports would you like to view? Enter a number:\n" +
+        System.out.println("Which reports would you like to view? Enter a number:\n\n" +
                 "1) Country reports\n" +
                 "2) City reports\n" +
                 "3) Capital city reports\n" +
                 "4) Population reports\n" +
-                "5) Language reports\n");
+                "5) Language reports\n" +
+                "6) Exit Program");
 
         // Reads user input
         int choice = scanner.nextInt();
@@ -74,10 +79,25 @@ public class app {
                         a.displayCountries(countries);
                         break;
                     case 4:
+                        countries  = queryCountry.getTopCountryInWorld(a.con);
+                        if (countries == null) {
+                            System.out.println("Failed to retrieve countries!");
+                            return;}
+                        a.displayCountries(countries);
                         break;
                     case 5:
+                        countries  = queryCountry.getTopCountryInContinent(a.con);
+                        if (countries == null) {
+                            System.out.println("Failed to retrieve countries!");
+                            return;}
+                        a.displayCountries(countries);
                         break;
                     case 6:
+                        countries  = queryCountry.getTopCountryInRegion(a.con);
+                        if (countries == null) {
+                            System.out.println("Failed to retrieve countries!");
+                            return;}
+                        a.displayCountries(countries);
                         break;
 
                 }
@@ -96,17 +116,17 @@ public class app {
             case 5:
                 break;
 
+            case 6:
+                // Disconnects from SQL database
+                // Do not remove!
+                a.disconnect();
+                menu = false;
+                System.out.println("Program exited successfully.");
+                break;
 
         }
+        }
 
-
-
-
-
-
-        // Disconnects from SQL database
-        // Do not remove!
-        a.disconnect();
     }
 
 

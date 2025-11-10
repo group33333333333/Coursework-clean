@@ -9,15 +9,6 @@ public class queryCountry {
 
 
 
-
-
-
-
-
-
-
-
-
     // Method structure for single result SQL queries
     // Method is passed 'code' variable with value "TWN"
     // String strSelect is created and defined as an SQL query
@@ -95,11 +86,12 @@ public class queryCountry {
     // Method to return all countries in a continent
     public static ArrayList<Country> getManyCountryInContinent(Connection con)
     {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the continent you would like to query:");
+        String input = scanner.nextLine();
+
         try
         {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter the continent you would like to query:");
-            String input = scanner.nextLine();
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -138,11 +130,13 @@ public class queryCountry {
     // Method to return all countries in a region
     public static ArrayList<Country> getManyCountryInRegion(Connection con)
     {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the region you would like to query:");
+        String input = scanner.nextLine();
+
         try
         {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter the region you would like to query:");
-            String input = scanner.nextLine();
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -176,6 +170,142 @@ public class queryCountry {
             return null;
         }
     }
+    public static ArrayList<Country> getTopCountryInWorld(Connection con)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of countries to display:");
+        int inputNum = scanner.nextInt();
 
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
+                            + "FROM country "
+                            + "ORDER BY Population DESC "
+                            + "LIMIT " + inputNum + "";;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract country information into ArrayList<Country>
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.code = rset.getString("Code");
+                country.name = rset.getString("Name");
+                country.continent = rset.getString("Continent");
+                country.region = rset.getString("Region");
+                country.population = rset.getInt("Population");
+                country.capital = rset.getString("Capital");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+
+    // Method to return top 'X' countries in a continent
+    public static ArrayList<Country> getTopCountryInContinent(Connection con)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the continent you would like to query:");
+        String input = scanner.nextLine();
+
+        System.out.println("Enter the number of countries to display:");
+        int inputNum = scanner.nextInt();
+
+        try
+        {
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
+                            + "FROM country "
+                            + "WHERE Continent = '" + input + "'"
+                            + "ORDER BY Population DESC "
+                            + "LIMIT " + inputNum + "";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract country information into ArrayList<Country>
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.code = rset.getString("Code");
+                country.name = rset.getString("Name");
+                country.continent = rset.getString("Continent");
+                country.region = rset.getString("Region");
+                country.population = rset.getInt("Population");
+                country.capital = rset.getString("Capital");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+
+    // Method to return top 'X' countries in a region
+    public static ArrayList<Country> getTopCountryInRegion(Connection con)
+    {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the region you would like to query:");
+        String input = scanner.nextLine();
+
+        System.out.println("Enter the number of countries to display:");
+        int inputNum = scanner.nextInt();
+
+        try
+        {
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
+                            + "FROM country "
+                            + "WHERE Region = '" + input + "'"
+                            + "ORDER BY Population DESC "
+                            + "LIMIT " + inputNum + "";;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract country information into ArrayList<Country>
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.code = rset.getString("Code");
+                country.name = rset.getString("Name");
+                country.continent = rset.getString("Continent");
+                country.region = rset.getString("Region");
+                country.population = rset.getInt("Population");
+                country.capital = rset.getString("Capital");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
 }
 
