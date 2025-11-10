@@ -13,6 +13,7 @@
 4) Installed and integrated Docker!!
 5) Successfully pushed and committed to, and pulled from GitHub.
 
+
 **07/11:**
 
 1) Integrated SQL queries
@@ -25,3 +26,8 @@
 2) Refactored structure of program to allow for cleaner 
 3) Defined structure for SQL query methods
 4) Fixed build badges and updated README
+
+**10/11**
+
+1) Added menu system in 'app' class
+2) Added user input to methods that require it

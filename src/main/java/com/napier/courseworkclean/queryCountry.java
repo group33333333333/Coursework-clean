@@ -2,8 +2,19 @@ package com.napier.courseworkclean;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class queryCountry {
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -38,13 +49,13 @@ public class queryCountry {
     }
 
 
-
     // Method structure for many result SQL queries
     // In this case, method is passed app connection and no other parameters
     // String strSelect is created and defined as an SQL query
     // Processes SQL query
     // Returns an ArrayList<Country> called 'countries' with many properties
-    public static ArrayList<Country> getManyCountry(Connection con)
+    // ArrayList is automatically ordered by 'Population' by SQL query
+    public static ArrayList<Country> getManyCountryInWorld(Connection con)
     {
         try
         {
@@ -54,7 +65,93 @@ public class queryCountry {
             String strSelect =
                     "SELECT Code, Name, Continent, Region, Population, Capital "
                             + "FROM country "
-                            + "ORDER BY Name ASC";
+                            + "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract country information into ArrayList<Country>
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.code = rset.getString("Code");
+                country.name = rset.getString("Name");
+                country.continent = rset.getString("Continent");
+                country.region = rset.getString("Region");
+                country.population = rset.getInt("Population");
+                country.capital = rset.getString("Capital");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+
+    // Method to return all countries in a continent
+    public static ArrayList<Country> getManyCountryInContinent(Connection con)
+    {
+        try
+        {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter the continent you would like to query:");
+            String input = scanner.nextLine();
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
+                            + "FROM country "
+                            + "WHERE Continent = '" + input + "'"
+                            + "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract country information into ArrayList<Country>
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.code = rset.getString("Code");
+                country.name = rset.getString("Name");
+                country.continent = rset.getString("Continent");
+                country.region = rset.getString("Region");
+                country.population = rset.getInt("Population");
+                country.capital = rset.getString("Capital");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+
+    // Method to return all countries in a region
+    public static ArrayList<Country> getManyCountryInRegion(Connection con)
+    {
+        try
+        {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter the region you would like to query:");
+            String input = scanner.nextLine();
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
+                            + "FROM country "
+                            + "WHERE Region = '" + input + "'"
+                            + "ORDER BY Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information into ArrayList<Country>
