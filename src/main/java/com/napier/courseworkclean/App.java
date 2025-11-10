@@ -3,7 +3,7 @@ package com.napier.courseworkclean;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class app {
+public class App {
     // Class-level connection
     public Connection con = null;
 
@@ -11,7 +11,7 @@ public class app {
 
         // Instantiates app container and connects to SQL database
         // Do not remove!!
-        app a = new app();
+        App a = new App();
         a.connect();
 
         // Calls getManyCity method from class CityQueries and returns ArrayList<City> 'cities'
