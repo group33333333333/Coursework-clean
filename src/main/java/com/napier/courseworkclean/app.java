@@ -2,47 +2,38 @@ package com.napier.courseworkclean;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class app {
+
     // Class-level connection
-    private Connection con = null;
+    public Connection con = null;
 
     public static void main(String[] args) {
 
-        // Instantiates app container and connects to SQL database
+        // Instantiates app object and connects to SQL database
+        // Only needs done once at beginning of program
         // Do not remove!!
         app a = new app();
         a.connect();
 
+        // Welcomes users once at beginning of program
+        System.out.println("Welcome to coursework-clean!");
 
-        // Calls getCountry method and returns single object 'country'
-        // Calls displayCountry method and prints values of properties in 'country' object
-        Country country = a.getCountry("TWN");
-        a.displayCountry(country);
+        // Passes app a and connection to mainMenu system where calls to methods are stored
+        // User remains in menu system for duration of the program
+        // Only returns to app class to disconnect
+        mainMenu.Menu(a.con, a);
 
+        // Final message at end of program
+        System.out.println("Thank you for using coursework-clean!");
 
-        // Calls getManyCountry method and returns ArrayList<Country> 'countries'
-        // Contains list of Country objects and associated properties
-        ArrayList<Country> countries = a.getManyCountry();
-        if (countries == null) {
-            System.out.println("Failed to retrieve countries!");
-            return;
-        }
-
-        // Calls displayCountries method when passed ArrayList<Country> 'countries'
-        // ArrayList is iterated through a for loop of ArrayList length and printed
-        a.displayCountries(countries);
-
-
-        // Prints entire ArrayList<Country> 'countries'
-        // Prints on one line, mot ideal
-        System.out.println(countries);
-
-
-        // Disconnects from SQL database
-        // Do not remove!
+        // Disconnects from SQL database and program ends
         a.disconnect();
     }
+
+
+
 
 
     // Method to connect to SQL database
@@ -92,73 +83,6 @@ public class app {
     }
 
 
-    // Method structure for single result SQL queries
-    // Method is passed 'code' variable with value "TWN"
-    // String strSelect is created and defined as an SQL query
-    // Processes SQL query
-    // Returns a single Country object 'country'
-    // In this case, method only prints Name and Population properties but could print more if needed
-    public Country getCountry(String code) {
-        try {
-            Statement stmt = con.createStatement();
-            String strSelect =
-                    "SELECT Name, Population " +
-                            "FROM country " +
-                            "WHERE Code = '" + code + "'";
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            if (rset.next()) {
-                Country country = new Country();
-                country.name = rset.getString("Name");
-                country.population = rset.getInt("Population");
-                return country;
-            } else
-                return null;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
-            return null;
-        }
-    }
-
-
-    // Method structure for many result SQL queries
-    // In this case, method is not passed any values but could be if needed
-    // String strSelect is created and defined as an SQL query
-    // Processes SQL query
-    // Returns an ArrayList<Country> called 'countries' with many properties
-    public ArrayList<Country> getManyCountry()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT Name, Continent, Region "
-                            + "FROM country "
-                            + "ORDER BY Name ASC";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information into ArrayList<Country>
-            ArrayList<Country> countries = new ArrayList<Country>();
-            while (rset.next())
-            {
-                Country country = new Country();
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                countries.add(country);
-            }
-            return countries;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
-            return null;
-        }
-    }
 
 
     // Method to display single Country object 'country'
@@ -169,7 +93,6 @@ public class app {
         }
     }
 
-
     // Method to display ArrayList<Country> 'countries'
     // Iterated through for loop to print every row in order
     // Array is already sorted alphabetically by SQL query
@@ -177,19 +100,19 @@ public class app {
     public void displayCountries(ArrayList<Country> countries) {
         try {
             if (countries != null) {
-                System.out.println("About to display " + countries.size() + " countries \n");
+                System.out.println("\nAbout to display " + countries.size() + " countries! \n");
 
                 // Prints a header with spacing prior to printing results of SQL query
-                System.out.println(String.format("%-50s %-25s %-25s", "Country", "Continent", "Region \n"));
+                System.out.println(String.format("%-10s %-50s %-25s %-35s %-25s %-25s" , "Code", "Name", "Continent", "Region", "Population", "Capital \n"));
                 // Loop over all employees in the list
                 for (Country country : countries)
                 {
                     String country_string =
-                            String.format("%-50s %-25s %-25s",
-                                    country.name, country.continent, country.region);
+                            String.format("%-10s %-50s %-25s%-35s %-25s %-25s",
+                                    country.code, country.name, country.continent, country.region, country.population, country.capital);
                     System.out.println(country_string);
                 }
-                System.out.println("\nFinished displaying " + countries.size() + " countries");
+                System.out.println("\nFinished displaying " + countries.size() + " countries! \n");
             } else {
                 System.out.println("Countries list is NULL!");
             }
@@ -199,6 +122,35 @@ public class app {
         }
     }
 
+    // Method to display ArrayList<City> 'cities'
+    // Iterated through for loop to print every row in order
+    // Array is already sorted alphabetically by SQL query
+    // Prints all cities and exits
+    public void displayCities(ArrayList<City> cities) {
+        try {
+            if (cities != null) {
+                System.out.println("\nAbout to display " + cities.size() + " cities \n");
+
+                // Prints a header with spacing prior to printing results of SQL query
+                System.out.println(String.format("%-30s %-10s %-25s %-10s",  "Name", "Country", "District", "Population  \n"));
+
+
+                // Loop over all cities in the list
+                for (City city : cities)
+                {
+                    String country_string =
+                            String.format("%-30s %-50s %-25s %-10s",
+                                    city.name, city.code, city.district, city.citypopulation);
+                    System.out.println(country_string);
+                }
+                System.out.println("\nFinished displaying " + cities.size() + " cities\n");
+            } else {
+                System.out.println("Cities list is NULL!");
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR in displayCities:");
+            e.printStackTrace();
+        }
+    }
+
 }
-
-

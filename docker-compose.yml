@@ -3,8 +3,14 @@ services:
   # Application Dockerfile is in same folder which is .
   app:
     build: .
+    stdin_open: true      # Keep STDIN open for user input
+    tty: true             # Allocate a pseudo-TTY
+    depends_on:
+      - database          # Wait for database to start first
+    # Remove container after it exits (optional, useful for repeated runs)
+    # container_name: my-app
 
-  # db is is db folder
+  # db is in db folder
   database:
     build: database/.
     restart: always

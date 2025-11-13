@@ -53,22 +53,24 @@ public class Country
     // Fixes ArrayList display output, lists an object's properties instead of memory address
     @Override
     public String toString() {
-        return "Country{" +
-                "code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", continent='" + continent + '\'' +
-                ", region='" + region + '\'' +
-                ", surfaceArea=" + surfaceArea +
-                ", indepYear=" + indepYear +
-                ", population=" + population +
-                ", lifeExpectancy=" + lifeExpectancy +
+        return "Country {" +
+                "Code='" + code + '\'' +
+                ", Name='" + name + '\'' +
+                ", Continent='" + continent + '\'' +
+                ", Region='" + region + '\'' +
+                ", SurfaceArea=" + surfaceArea +
+                ", IndepYear=" + indepYear +
+                ", Population=" + population +
+                ", LifeExpectancy=" + lifeExpectancy +
                 ", GNP=" + GNP +
                 ", GNPOld=" + GNPOld +
-                ", localName='" + localName + '\'' +
-                ", govForm='" + govForm + '\'' +
-                ", headOfState='" + headOfState + '\'' +
-                ", capital='" + capital + '\'' +
-                ", code2='" + code2 + '\'' +
+                ", LocalName='" + localName + '\'' +
+                ", GovForm='" + govForm + '\'' +
+                ", HeadOfState='" + headOfState + '\'' +
+                ", Capital='" + capital + '\'' +
+                ", Code2='" + code2 + '\'' +
                 '}';
     }
 }
+
+

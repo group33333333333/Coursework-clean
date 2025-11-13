@@ -19,11 +19,18 @@ public class Language {
     // Fixes ArrayList display output, lists an object's properties instead of memory address
     @Override
     public String toString() {
-        return "Language{" +
-                "countryCode='" + countryCode + '\'' +
-                ", language='" + language + '\'' +
-                ", isOfficial='" + isOfficial + '\'' +
-                ", percentage=" + percentage +
+        return "Language {" +
+                "Code='" + countryCode + '\'' +
+                ", Language='" + language + '\'' +
+                ", IsOfficial='" + isOfficial + '\'' +
+                ", Percentage=" + percentage +
                 '}';
     }
 }
+
+
+
+
+
+
+

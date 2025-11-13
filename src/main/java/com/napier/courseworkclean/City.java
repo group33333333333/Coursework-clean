@@ -4,13 +4,13 @@ package com.napier.courseworkclean;
 public class City {
 
     /** Property representing City's ID num **/
-    public int ID;
+    public int id;
 
     /** Property representing City's name **/
     public String name;
 
     /** Property representing City's country code **/
-    public String countryCode;
+    public String code;
 
     /** Property representing City's district **/
     public String district;
@@ -22,12 +22,13 @@ public class City {
     // Fixes ArrayList display output, lists an object's properties instead of memory address
     @Override
     public String toString() {
-        return "City{" +
-                "ID=" + ID +
-                ", name='" + name + '\'' +
-                ", countryCode='" + countryCode + '\'' +
-                ", district='" + district + '\'' +
-                ", citypopulation='" + citypopulation + '\'' +
+        return "City {" +
+                "ID=" + id +
+                ", Name='" + name + '\'' +
+                ", CountryCode='" + code + '\'' +
+                ", District='" + district + '\'' +
+                ", Population='" + citypopulation + '\'' +
                 '}';
     }
 }
+
