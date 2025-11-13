@@ -18,7 +18,4 @@ jobs:
       - name: Build with Maven
         run: mvn package
       - name: Run docker compose
-        run: |
-         docker compose up -d database
-         sleep 10
-         printf "1\n1\n6\n" | docker compose up --abort-on-container-exit app
+        run: echo -e "6\n" | docker compose run --rm app
