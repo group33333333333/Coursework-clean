@@ -8,7 +8,6 @@ public class queryCountry {
 
 
 
-
     // Method structure for single result SQL queries
     // Method is passed 'code' variable with value "TWN"
     // String strSelect is created and defined as an SQL query
@@ -42,8 +41,8 @@ public class queryCountry {
 
     // Method structure for many result SQL queries
     // In this case, method is passed app connection and no other parameters
-    // String strSelect is created and defined as an SQL query
-    // Processes SQL query
+    // String strSelect is created and passed to method 'exeQueryCountry()'
+    // Method creates SQL query with String strSelect and processes SQL query
     // Returns an ArrayList<Country> called 'countries' with many properties
     // ArrayList is automatically ordered by 'Population' by SQL query
     public static ArrayList<Country> getManyCountryInWorld(Connection con)
@@ -57,22 +56,7 @@ public class queryCountry {
                     "SELECT Code, Name, Continent, Region, Population, Capital "
                             + "FROM country "
                             + "ORDER BY Population DESC";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information into ArrayList<Country>
-            ArrayList<Country> countries = new ArrayList<Country>();
-            while (rset.next())
-            {
-                Country country = new Country();
-                country.code = rset.getString("Code");
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                country.population = rset.getInt("Population");
-                country.capital = rset.getString("Capital");
-                countries.add(country);
-            }
-            return countries;
+            return exeQueryCountry(strSelect, con);
         }
         catch (Exception e)
         {
@@ -101,22 +85,7 @@ public class queryCountry {
                             + "FROM country "
                             + "WHERE Continent = '" + input + "'"
                             + "ORDER BY Population DESC";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information into ArrayList<Country>
-            ArrayList<Country> countries = new ArrayList<Country>();
-            while (rset.next())
-            {
-                Country country = new Country();
-                country.code = rset.getString("Code");
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                country.population = rset.getInt("Population");
-                country.capital = rset.getString("Capital");
-                countries.add(country);
-            }
-            return countries;
+            return exeQueryCountry(strSelect, con);
         }
         catch (Exception e)
         {
@@ -146,22 +115,7 @@ public class queryCountry {
                             + "FROM country "
                             + "WHERE Region = '" + input + "'"
                             + "ORDER BY Population DESC";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information into ArrayList<Country>
-            ArrayList<Country> countries = new ArrayList<Country>();
-            while (rset.next())
-            {
-                Country country = new Country();
-                country.code = rset.getString("Code");
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                country.population = rset.getInt("Population");
-                country.capital = rset.getString("Capital");
-                countries.add(country);
-            }
-            return countries;
+            return exeQueryCountry(strSelect, con);
         }
         catch (Exception e)
         {
@@ -170,6 +124,8 @@ public class queryCountry {
             return null;
         }
     }
+
+    // Method to return top 'X' countries in the world
     public static ArrayList<Country> getTopCountryInWorld(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -185,23 +141,8 @@ public class queryCountry {
                     "SELECT Code, Name, Continent, Region, Population, Capital "
                             + "FROM country "
                             + "ORDER BY Population DESC "
-                            + "LIMIT " + inputNum + "";;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information into ArrayList<Country>
-            ArrayList<Country> countries = new ArrayList<Country>();
-            while (rset.next())
-            {
-                Country country = new Country();
-                country.code = rset.getString("Code");
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                country.population = rset.getInt("Population");
-                country.capital = rset.getString("Capital");
-                countries.add(country);
-            }
-            return countries;
+                            + "LIMIT " + inputNum + "";
+            return exeQueryCountry(strSelect, con);
         }
         catch (Exception e)
         {
@@ -234,22 +175,7 @@ public class queryCountry {
                             + "WHERE Continent = '" + input + "'"
                             + "ORDER BY Population DESC "
                             + "LIMIT " + inputNum + "";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information into ArrayList<Country>
-            ArrayList<Country> countries = new ArrayList<Country>();
-            while (rset.next())
-            {
-                Country country = new Country();
-                country.code = rset.getString("Code");
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                country.population = rset.getInt("Population");
-                country.capital = rset.getString("Capital");
-                countries.add(country);
-            }
-            return countries;
+            return exeQueryCountry(strSelect, con);
         }
         catch (Exception e)
         {
@@ -282,13 +208,35 @@ public class queryCountry {
                             + "FROM country "
                             + "WHERE Region = '" + input + "'"
                             + "ORDER BY Population DESC "
-                            + "LIMIT " + inputNum + "";;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information into ArrayList<Country>
-            ArrayList<Country> countries = new ArrayList<Country>();
+                            + "LIMIT " + inputNum + "";
+            return exeQueryCountry(strSelect, con);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+
+    // Method to process SQL queries
+    // Is passed String strSelect and returns ArrayList<Country> 'countries'
+    public static ArrayList<Country> exeQueryCountry(String strSelect, Connection con) throws SQLException
+    {
+        // Creates ArrayList<Country> to store properties of objects
+        ArrayList<Country> countries = new ArrayList<Country>();
+
+        // Try with resources to automatically close resources when finished
+        try (Statement stmt = con.createStatement();
+             ResultSet rset = stmt.executeQuery(strSelect))
+        {
+            // Repeats for length of returned SQL result set
+            // Adds all properties retrieved into ArrayList<Country> 'countries'
             while (rset.next())
             {
+                // Creates objects and assigns values to its properties
+                // Adds to ArrayList countries
                 Country country = new Country();
                 country.code = rset.getString("Code");
                 country.name = rset.getString("Name");
@@ -298,14 +246,10 @@ public class queryCountry {
                 country.capital = rset.getString("Capital");
                 countries.add(country);
             }
-            return countries;
         }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
-            return null;
-        }
+
+        return countries;
     }
+
 }
 

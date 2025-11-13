@@ -22,7 +22,7 @@ public class City {
     // Fixes ArrayList display output, lists an object's properties instead of memory address
     @Override
     public String toString() {
-        return "City{" +
+        return "City {" +
                 "ID=" + id +
                 ", Name='" + name + '\'' +
                 ", CountryCode='" + code + '\'' +
