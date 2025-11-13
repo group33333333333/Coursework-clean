@@ -103,7 +103,7 @@ public class app {
                 System.out.println("\nAbout to display " + countries.size() + " countries! \n");
 
                 // Prints a header with spacing prior to printing results of SQL query
-                System.out.println(String.format("%-10s %-50s %-25s %-35s %-25s %-25s" , "Code", "Name", "Continent", "Region", "Population", "Capital \n"));
+                System.out.println(String.format("%-10s %-50s %-25s%-35s %-25s %-25s" , "Code", "Name", "Continent", "Region", "Population", "Capital \n"));
                 // Loop over all employees in the list
                 for (Country country : countries)
                 {
@@ -132,14 +132,14 @@ public class app {
                 System.out.println("\nAbout to display " + cities.size() + " cities \n");
 
                 // Prints a header with spacing prior to printing results of SQL query
-                System.out.println(String.format("%-30s %-10s %-25s %-10s",  "Name", "Country", "District", "Population  \n"));
+                System.out.println(String.format("%-30s %-55s %-25s %-10s",  "Name", "Country", "District", "Population  \n"));
 
 
                 // Loop over all cities in the list
                 for (City city : cities)
                 {
                     String country_string =
-                            String.format("%-30s %-50s %-25s %-10s",
+                            String.format("%-30s %-55s %-25s %-10s",
                                     city.name, city.code, city.district, city.citypopulation);
                     System.out.println(country_string);
                 }
@@ -149,6 +149,33 @@ public class app {
             }
         } catch (Exception e) {
             System.out.println("ERROR in displayCities:");
+            e.printStackTrace();
+        }
+    }
+
+    public void displayCapCities(ArrayList<City> capCities) {
+        try {
+            if (capCities != null) {
+                System.out.println("\nAbout to display " + capCities.size() + " capital cities \n");
+
+                // Prints a header with spacing prior to printing results of SQL query
+                System.out.println(String.format("%-35s %-55s %-10s",  "Name", "Country", "Population  \n"));
+
+
+                // Loop over all cities in the list
+                for (City city : capCities)
+                {
+                    String country_string =
+                            String.format("%-35s %-55s %-10s",
+                                    city.name, city.code, city.citypopulation);
+                    System.out.println(country_string);
+                }
+                System.out.println("\nFinished displaying " + capCities.size() + " capital cities\n");
+            } else {
+                System.out.println("Capital cities list is NULL!");
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR in displayCapCities:");
             e.printStackTrace();
         }
     }

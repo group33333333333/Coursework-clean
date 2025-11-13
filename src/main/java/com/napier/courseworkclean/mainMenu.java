@@ -42,6 +42,7 @@ public class mainMenu {
                     break;
 
                 case 3:
+                    menuCapCity.MenuCapCity(a.con, a);
                     break;
 
                 case 4:
@@ -59,6 +60,7 @@ public class mainMenu {
                 default:
                     System.out.println("Invalid choice!\n\n");
 
+                    // Invalidates while loop and ends program
                     menuOn = false;
                     break;
             }
