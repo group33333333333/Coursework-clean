@@ -2,50 +2,38 @@ package com.napier.courseworkclean;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class App {
+public class app {
+
     // Class-level connection
     public Connection con = null;
 
     public static void main(String[] args) {
 
-        // Instantiates app container and connects to SQL database
+        // Instantiates app object and connects to SQL database
+        // Only needs done once at beginning of program
         // Do not remove!!
-        App a = new App();
+        app a = new app();
         a.connect();
 
-        // Calls getManyCity method from class CityQueries and returns ArrayList<City> 'cities'
-        // Contains list of City objects and associated properties
-        ArrayList<City> cities = queryCity.getManyCity(a.con);
-        if (cities == null) {
-            System.out.println("Failed to retrieve cities!");
-            return;
-        }
-        // Calls displayCities method when passed ArrayList<City> 'cities'
-        // ArrayList is iterated through a for loop of ArrayList length and printed
-        a.displayCities(cities);
+        // Welcomes users once at beginning of program
+        System.out.println("Welcome to coursework-clean!");
 
-        // Call getCountry method from CountryQueries class, passing the connection from app
-        Country country = queryCountry.getCountry("TWN", a.con);
-        a.displayCountry(country);
+        // Passes app a and connection to mainMenu system where calls to methods are stored
+        // User remains in menu system for duration of the program
+        // Only returns to app class to disconnect
+        mainMenu.Menu(a.con, a);
 
+        // Final message at end of program
+        System.out.println("Thank you for using coursework-clean!");
 
-        // Calls getManyCountry method and returns ArrayList<Country> 'countries'
-        // Contains list of Country objects and associated properties
-        ArrayList<Country> countries = queryCountry.getManyCountry(a.con);
-        if (countries == null) {
-            System.out.println("Failed to retrieve countries!");
-            return;
-        }
-        // Calls displayCountries method when passed ArrayList<Country> 'countries'
-        // ArrayList is iterated through a for loop of ArrayList length and printed
-        a.displayCountries(countries);
-
-
-        // Disconnects from SQL database
-        // Do not remove!
+        // Disconnects from SQL database and program ends
         a.disconnect();
     }
+
+
+
 
 
     // Method to connect to SQL database
@@ -112,10 +100,10 @@ public class App {
     public void displayCountries(ArrayList<Country> countries) {
         try {
             if (countries != null) {
-                System.out.println("About to display " + countries.size() + " countries \n");
+                System.out.println("\nAbout to display " + countries.size() + " countries! \n");
 
                 // Prints a header with spacing prior to printing results of SQL query
-                System.out.println(String.format("%-10s %-50s %-25s %-35s %-25s %-25s" , "Code", "Name", "Continent", "Region", "Population", "Capital \n"));
+                System.out.println(String.format("%-10s %-50s %-25s%-35s %-25s %-25s" , "Code", "Name", "Continent", "Region", "Population", "Capital \n"));
                 // Loop over all employees in the list
                 for (Country country : countries)
                 {
@@ -124,7 +112,7 @@ public class App {
                                     country.code, country.name, country.continent, country.region, country.population, country.capital);
                     System.out.println(country_string);
                 }
-                System.out.println("\nFinished displaying " + countries.size() + " countries");
+                System.out.println("\nFinished displaying " + countries.size() + " countries! \n");
             } else {
                 System.out.println("Countries list is NULL!");
             }
@@ -141,26 +129,53 @@ public class App {
     public void displayCities(ArrayList<City> cities) {
         try {
             if (cities != null) {
-                System.out.println("About to display " + cities.size() + " cities \n");
+                System.out.println("\nAbout to display " + cities.size() + " cities \n");
 
                 // Prints a header with spacing prior to printing results of SQL query
-                System.out.println(String.format("%-30s %-10s %-25s %-10s",  "Name", "Country", "District", "Population  \n"));
+                System.out.println(String.format("%-30s %-55s %-25s %-10s",  "Name", "Country", "District", "Population  \n"));
 
 
                 // Loop over all cities in the list
                 for (City city : cities)
                 {
                     String country_string =
-                            String.format("%-30s %-10s %-25s %-10s",
+                            String.format("%-30s %-55s %-25s %-10s",
                                     city.name, city.code, city.district, city.citypopulation);
                     System.out.println(country_string);
                 }
-                System.out.println("\nFinished displaying " + cities.size() + " cities");
+                System.out.println("\nFinished displaying " + cities.size() + " cities\n");
             } else {
                 System.out.println("Cities list is NULL!");
             }
         } catch (Exception e) {
             System.out.println("ERROR in displayCities:");
+            e.printStackTrace();
+        }
+    }
+
+    public void displayCapCities(ArrayList<City> capCities) {
+        try {
+            if (capCities != null) {
+                System.out.println("\nAbout to display " + capCities.size() + " capital cities \n");
+
+                // Prints a header with spacing prior to printing results of SQL query
+                System.out.println(String.format("%-35s %-55s %-10s",  "Name", "Country", "Population  \n"));
+
+
+                // Loop over all cities in the list
+                for (City city : capCities)
+                {
+                    String country_string =
+                            String.format("%-35s %-55s %-10s",
+                                    city.name, city.code, city.citypopulation);
+                    System.out.println(country_string);
+                }
+                System.out.println("\nFinished displaying " + capCities.size() + " capital cities\n");
+            } else {
+                System.out.println("Capital cities list is NULL!");
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR in displayCapCities:");
             e.printStackTrace();
         }
     }

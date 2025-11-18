@@ -1,9 +1,9 @@
-name: Testing
+name: A workflow for my Hello World App
 on: push
 
 jobs:
   build:
-    name: Test action
+    name: Hello world action
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -18,16 +18,4 @@ jobs:
       - name: Build with Maven
         run: mvn package
       - name: Run docker compose
-        run: docker compose up --abort-on-container-exit
-      - run: mvn --batch-mode --update-snapshots verify
-      - run: mkdir staging && cp target/*.jar staging
-      - uses: actions/upload-artifact@v4
-        with:
-          name: package
-          path: staging
-
-defaults:
-permissions:
-env:
-run-name:
-concurrency:
+        run: echo -e "6\n" | docker compose run --rm app
