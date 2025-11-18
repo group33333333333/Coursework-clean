@@ -25,3 +25,12 @@
 2) Refactored structure of program to allow for cleaner 
 3) Defined structure for SQL query methods
 4) Fixed build badges and updated README
+
+
+**18/11**
+
+1) Finalized testing
+2) Better branch usage
+3) Kanban board 
+4) Utilised github actions
+5) Updated github issues 

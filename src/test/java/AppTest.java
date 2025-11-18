@@ -32,10 +32,10 @@ public class AppTest {
         App app = new App();
 
         City ed = new City();
-        ed.name = "E";
-        ed.code = "EEE";
-        ed.district = "ELAND";
-        ed.citypopulation = "8";
+        ed.name = "Edinburgh";
+        ed.code = "EDI";
+        ed.district = "Lothian";
+        ed.citypopulation = "500,000";
 
         ArrayList<City> cities = new ArrayList<>();
         cities.add(ed);
