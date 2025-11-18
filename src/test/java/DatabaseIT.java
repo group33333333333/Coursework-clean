@@ -2,7 +2,6 @@ package com.napier.courseworkclean;
 
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.MySQLContainer;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,8 +30,8 @@ public class DatabaseIT {
                 try (PreparedStatement stmt = con.prepareStatement("SELECT 1");
                      ResultSet rs = stmt.executeQuery()) {
 
-                    assertTrue(rs.next(), "Should have one row");
-                    assertEquals(1, rs.getInt(1), "SELECT 1 should return 1");
+                    assertTrue(rs.next(), "should be one row");
+                    assertEquals(1, rs.getInt(1), ("should return 1"));
                 }
             }
         }
