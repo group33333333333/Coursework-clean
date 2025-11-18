@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class app {
+public class App {
 
     // Class-level connection
     public Connection con = null;
@@ -14,7 +14,7 @@ public class app {
         // Instantiates app object and connects to SQL database
         // Only needs done once at beginning of program
         // Do not remove!!
-        app a = new app();
+        App a = new App();
         a.connect();
 
         // Welcomes users once at beginning of program

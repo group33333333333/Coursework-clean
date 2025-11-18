@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class menuCountry {
 
-    public static void MenuCountry(Connection con, app a) {
+    public static void MenuCountry(Connection con, App a) {
 
         Scanner scanner = new Scanner(System.in);
 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class mainMenu {
 
-    public static void Menu(Connection con, app a)
+    public static void Menu(Connection con, App a)
     {
         Scanner scanner = new Scanner(System.in);
 

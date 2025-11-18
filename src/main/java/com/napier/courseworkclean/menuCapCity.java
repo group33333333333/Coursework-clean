@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class menuCapCity {
 
-    public static void MenuCapCity(Connection con, app a) {
+    public static void MenuCapCity(Connection con, App a) {
 
         Scanner scanner = new Scanner(System.in);
 
