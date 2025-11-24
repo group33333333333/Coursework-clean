@@ -1,16 +1,15 @@
 version: '3'
 services:
-  # Application Dockerfile is in same folder which is .
   app:
     build: .
-    stdin_open: true      # Keep STDIN open for user input
-    tty: true             # Allocate a pseudo-TTY
+    stdin_open: true            # Keeps STDIN open
+    tty: true                   # Allocates terminal
     depends_on:
-      - database          # Wait for database to start first
-    # Remove container after it exits (optional, useful for repeated runs)
-    # container_name: my-app
+      - database
+    entrypoint: ["tail", "-f", "/dev/null"]  # Override entrypoint instead of command
+    container_name: my-app      #Fixed name for container
+    # Remove the entrypoint/command override - let Dockerfile's ENTRYPOINT run
 
-  # db is in db folder
   database:
     build: database/.
     restart: always
