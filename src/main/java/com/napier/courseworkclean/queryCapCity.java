@@ -5,14 +5,23 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Class detailing all methods related to querying Capital Cities via SQL
+ * Contains 6 methods to generate SQL methods, and 1 to universally process them
+ * Final method returns ArrayList<City> capCities
+ */
 public class queryCapCity {
 
-
-    // Method structure for many result SQL queries
-    // In this case, method is passed connection to app and no additional parameters
-    // String strSelect is created and passed to method exeQueryCity()
-    // Method generates and processes SQL query
-    // Returns an ArrayList<City> called 'cities' with many properties
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all capital cities in the world
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCapCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'capCities' with many properties
+     * @param con
+     * @return capCities
+     */
     public static ArrayList<City> getManyCapCityInWorld(Connection con)
     {
         try
@@ -36,7 +45,17 @@ public class queryCapCity {
         }
     }
 
-    // Method to return all capital cities in a continent
+
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all capital cities in a continent
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCapCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'capCities' with many properties
+     * @param con
+     * @return capCities
+     */
     public static ArrayList<City> getManyCapCityInContinent(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -64,7 +83,17 @@ public class queryCapCity {
         }
     }
 
-    // Method to return all capital cities in a region
+
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all capital cities in a region
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCapCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'capCities' with many properties
+     * @param con
+     * @return capCities
+     */
     public static ArrayList<City> getManyCapCityInRegion(Connection con)
     {
 
@@ -93,7 +122,17 @@ public class queryCapCity {
         }
     }
 
-    // Method to return top 'X' capital cities in the world
+
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns top X capital cities in the world
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCapCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'capCities' with many properties
+     * @param con
+     * @return capCities
+     */
     public static ArrayList<City> getTopCapCityInWorld(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -123,7 +162,17 @@ public class queryCapCity {
         }
     }
 
-    // Method to return top 'X' capital cities in a continent
+
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns top X capital cities in a continent
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCapCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'capCities' with many properties
+     * @param con
+     * @return capCities
+     */
     public static ArrayList<City> getTopCapCityInContinent(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -155,7 +204,17 @@ public class queryCapCity {
         }
     }
 
-    // Method to return top 'X' capital cities in a region
+
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns top X capital cities in a region
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCapCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'capCities' with many properties
+     * @param con
+     * @return capCities
+     */
     public static ArrayList<City> getTopCapCityInRegion(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -190,11 +249,14 @@ public class queryCapCity {
 
 
 
-
-
-
-    // Method to process SQL queries
-    // Is passed String strSelect and returns ArrayList<City> 'capCities'
+    /**
+     * Method to process generated SQL queries
+     * Is passed String strSelect and connection to app and returns ArrayList<City> 'capCities'
+     * @param strSelect
+     * @param con
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<City> exeQueryCapCity(String strSelect, Connection con) throws SQLException
     {
         // Creates ArrayList<City> to store properties of objects

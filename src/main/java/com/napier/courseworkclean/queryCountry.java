@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Class detailing all methods related to querying Countries via SQL
+ * Contains 7 methods to generate SQL methods, and 1 to universally process them
+ * Final method returns ArrayList<Country> countries
+ */
 public class queryCountry {
 
 
@@ -39,12 +44,16 @@ public class queryCountry {
     }
 
 
-    // Method structure for many result SQL queries
-    // In this case, method is passed app connection and no other parameters
-    // String strSelect is created and passed to method 'exeQueryCountry()'
-    // Method creates SQL query with String strSelect and processes SQL query
-    // Returns an ArrayList<Country> called 'countries' with many properties
-    // ArrayList is automatically ordered by 'Population' by SQL query
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all countries in the world
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCountry()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<Country> called 'countries' with many properties
+     * @param con
+     * @return countries
+     */
     public static ArrayList<Country> getManyCountryInWorld(Connection con)
     {
         try
@@ -67,7 +76,16 @@ public class queryCountry {
     }
 
 
-    // Method to return all countries in a continent
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all countries in a continent
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCountry()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<Country> called 'countries' with many properties
+     * @param con
+     * @return countries
+     */
     public static ArrayList<Country> getManyCountryInContinent(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -96,7 +114,16 @@ public class queryCountry {
     }
 
 
-    // Method to return all countries in a region
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all countries in a region
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCountry()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<Country> called 'countries' with many properties
+     * @param con
+     * @return countries
+     */
     public static ArrayList<Country> getManyCountryInRegion(Connection con)
     {
 
@@ -125,7 +152,16 @@ public class queryCountry {
         }
     }
 
-    // Method to return top 'X' countries in the world
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns top X countries in the world
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCountry()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<Country> called 'countries' with many properties
+     * @param con
+     * @return countries
+     */
     public static ArrayList<Country> getTopCountryInWorld(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -153,7 +189,16 @@ public class queryCountry {
     }
 
 
-    // Method to return top 'X' countries in a continent
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns top X countries in a continent
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCountry()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<Country> called 'countries' with many properties
+     * @param con
+     * @return countries
+     */
     public static ArrayList<Country> getTopCountryInContinent(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -186,7 +231,16 @@ public class queryCountry {
     }
 
 
-    // Method to return top 'X' countries in a region
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all countries in a region
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCountry()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<Country> called 'countries' with many properties
+     * @param con
+     * @return countries
+     */
     public static ArrayList<Country> getTopCountryInRegion(Connection con)
     {
 
@@ -220,8 +274,14 @@ public class queryCountry {
     }
 
 
-    // Method to process SQL queries
-    // Is passed String strSelect and returns ArrayList<Country> 'countries'
+    /**
+     * Method to process generated SQL queries
+     * Is passed String strSelect and returns ArrayList<Country> 'countries'
+     * @param strSelect
+     * @param con
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<Country> exeQueryCountry(String strSelect, Connection con) throws SQLException
     {
         // Creates ArrayList<Country> to store properties of objects

@@ -4,14 +4,24 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Class detailing all methods related to querying Cities via SQL
+ * Contains 10 methods to generate SQL methods, and 1 to universally process them
+ * Final method returns ArrayList<City> cities
+ */
 public class queryCity {
 
 
-    // Method structure for many result SQL queries
-    // In this case, method is passed connection to app and no additional parameters
-    // String strSelect is created and passed to method exeQueryCity()
-    // Method generates and processes SQL query
-    // Returns an ArrayList<City> called 'cities' with many properties
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all cities in the world
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'cities' with many properties
+     * @param con
+     * @return cities
+     */
     public static ArrayList<City> getManyCityInWorld(Connection con)
     {
         try
@@ -36,7 +46,16 @@ public class queryCity {
     }
 
 
-    // Method to return all cities in a continent
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all cities in a continent
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'cities' with many properties
+     * @param con
+     * @return cities
+     */
     public static ArrayList<City> getManyCityInContinent(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -65,7 +84,16 @@ public class queryCity {
     }
 
 
-    // Method to return all cities in a region
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all cities in a region
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'cities' with many properties
+     * @param con
+     * @return cities
+     */
     public static ArrayList<City> getManyCityInRegion(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -94,7 +122,16 @@ public class queryCity {
     }
 
 
-    // Method to return all cities in a country
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all cities in a country
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'cities' with many properties
+     * @param con
+     * @return cities
+     */
     public static ArrayList<City> getManyCityInCountry(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -123,7 +160,16 @@ public class queryCity {
     }
 
 
-    // Method to return all cities in a district
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns all cities in a district
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'cities' with many properties
+     * @param con
+     * @return cities
+     */
     public static ArrayList<City> getManyCityInDistrict(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -152,7 +198,16 @@ public class queryCity {
     }
 
 
-    // Method to return top 'X' cities in the world
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns top X cities in the world
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'cities' with many properties
+     * @param con
+     * @return cities
+     */
     public static ArrayList<City> getTopCityInWorld(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -182,7 +237,16 @@ public class queryCity {
     }
 
 
-    // Method to return top 'X' cities in a continent
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns top X cities in a continent
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'cities' with many properties
+     * @param con
+     * @return cities
+     */
     public static ArrayList<City> getTopCityInContinent(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -215,7 +279,16 @@ public class queryCity {
     }
 
 
-    // Method to return top 'X' cities in a region
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns top X cities in a region
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'cities' with many properties
+     * @param con
+     * @return cities
+     */
     public static ArrayList<City> getTopCityInRegion(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -248,7 +321,16 @@ public class queryCity {
     }
 
 
-    // Method to return top 'X' cities in a country
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns top X cities in a country
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'cities' with many properties
+     * @param con
+     * @return cities
+     */
     public static ArrayList<City> getTopCityInCountry(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -281,7 +363,16 @@ public class queryCity {
     }
 
 
-    // Method to return top 'X' cities in a district
+    /**
+     *  Method structure for many result SQL queries
+     *  Returns top X cities in a district
+     *  In this case, method is passed connection to app and no additional parameters
+     *  String strSelect is created and passed to method exeQueryCity()
+     *  Method generates and processes SQL query
+     *  Returns an ArrayList<City> called 'cities' with many properties
+     * @param con
+     * @return cities
+     */
     public static ArrayList<City> getTopCityInDistrict(Connection con)
     {
         Scanner scanner = new Scanner(System.in);
@@ -314,8 +405,14 @@ public class queryCity {
     }
 
 
-    // Method to process SQL queries
-    // Is passed String strSelect and returns ArrayList<City> 'cities'
+    /**
+     * Method to process generated SQL queries
+     * Is passed String strSelect and connection to app and returns ArrayList<City> 'cities'
+     * @param strSelect
+     * @param con
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<City> exeQueryCity(String strSelect, Connection con) throws SQLException
     {
         // Creates ArrayList<City> to store properties of objects

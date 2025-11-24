@@ -4,6 +4,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * App class is used to instantiate 'App' container and connect to SQL database
+ * Upon connection, user is fed into menu UI while loop and remain there until end of operations
+ * Following this, a thank-you message is displayed and 'App' disconnects from database
+ *
+ * App class also contains methods to display SQL query results
+ * Can print ArrayLists for cities, capital cities and countries
+ */
 public class App {
 
     // Class-level connection
@@ -11,9 +19,9 @@ public class App {
 
     public static void main(String[] args) {
 
-        // Instantiates app object and connects to SQL database
-        // Only needs done once at beginning of program
-        // Do not remove!!
+         // Instantiates app object and connects to SQL database
+         // Only needs done once at beginning of program
+         // Do not remove!!
         App a = new App();
         a.connect();
 
@@ -36,8 +44,8 @@ public class App {
 
 
 
-    // Method to connect to SQL database
-    // Do not touch
+    /** Method to connect to SQL database
+    *   Do not touch **/
     public void connect() {
         try {
             // Load Database driver
@@ -69,8 +77,8 @@ public class App {
         }
     }
 
-    // Method to disconnect from SQL database
-    // Do mot touch
+    /** Method to disconnect from SQL database
+    *   Do not touch **/
     public void disconnect() {
         if (con != null) {
             try {
@@ -85,18 +93,22 @@ public class App {
 
 
 
-    // Method to display single Country object 'country'
-    // Prints single row and exits
+    /** Method to display single Country object 'country'
+     *   Prints single row and exits
+     * @param country  *   */
     public void displayCountry(Country country) {
         if (country != null) {
             System.out.println(country.name + " " + country.population);
         }
     }
 
-    // Method to display ArrayList<Country> 'countries'
-    // Iterated through for loop to print every row in order
-    // Array is already sorted alphabetically by SQL query
-    // Prints 239 rows and exits
+
+    /** Method to display ArrayList<Country> 'countries'
+     *  Iterated through for loop to print every row in order
+     *  Array is already sorted alphabetically by SQL query
+     *  Prints 239 rows and exits
+     * @param countries
+     *       */
     public void displayCountries(ArrayList<Country> countries) {
         try {
             if (countries != null) {
@@ -122,10 +134,12 @@ public class App {
         }
     }
 
-    // Method to display ArrayList<City> 'cities'
-    // Iterated through for loop to print every row in order
-    // Array is already sorted alphabetically by SQL query
-    // Prints all cities and exits
+    /** Method to display ArrayList<City> 'cities'
+     *  Iterated through for loop to print every row in order
+     *  Array is already sorted alphabetically by SQL query
+     *  Prints all cities and exits
+     * @param cities
+     *       */
     public void displayCities(ArrayList<City> cities) {
         try {
             if (cities != null) {
@@ -153,6 +167,12 @@ public class App {
         }
     }
 
+    /** Method to display ArrayList<City> 'capCities'
+     *  Iterated through for loop to print every row in order
+     *  Array is already sorted alphabetically by SQL query
+     *  Prints all capital cities and exits
+     * @param capCities
+     *       */
     public void displayCapCities(ArrayList<City> capCities) {
         try {
             if (capCities != null) {

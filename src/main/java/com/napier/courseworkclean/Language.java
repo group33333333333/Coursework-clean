@@ -1,6 +1,9 @@
 package com.napier.courseworkclean;
 
-/** Class representing a country's language properties **/
+/** Class representing a language
+ *  Properties are to be pulled from SQL database and assigned to object 'Language'
+ *  Will implement ArrayList<Language> Languages
+ * */
 public class Language {
 
     /** Property representing Country's 3-letter code **/
@@ -15,8 +18,9 @@ public class Language {
     /** Property representing the percentage of native language speakers **/
     public double percentage ;
 
-    // toString override method
-    // Fixes ArrayList display output, lists an object's properties instead of memory address
+    /** toString override method
+     Fixes ArrayList display output, lists an object's properties instead of memory address
+     *      */
     @Override
     public String toString() {
         return "Language {" +

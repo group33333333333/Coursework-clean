@@ -1,6 +1,9 @@
 package com.napier.courseworkclean;
 
-/** Class representing a country **/
+/** Class representing a country
+ *  Properties are pulled from SQL database and assigned to object 'Country'
+ *  Objects are added to ArrayList<Country> countries to be displayed
+ * */
 public class Country
 {
 
@@ -49,26 +52,27 @@ public class Country
     /** Property representing Country's 2-letter code  **/
     public String code2;
 
-    // toString override method
-    // Fixes ArrayList display output, lists an object's properties instead of memory address
+    /** toString override method
+        Fixes ArrayList display output, lists an object's properties instead of memory address
+     *      */
     @Override
     public String toString() {
         return "Country {" +
-                "Code='" + code + '\'' +
-                ", Name='" + name + '\'' +
-                ", Continent='" + continent + '\'' +
-                ", Region='" + region + '\'' +
-                ", SurfaceArea=" + surfaceArea +
-                ", IndepYear=" + indepYear +
-                ", Population=" + population +
-                ", LifeExpectancy=" + lifeExpectancy +
-                ", GNP=" + GNP +
-                ", GNPOld=" + GNPOld +
-                ", LocalName='" + localName + '\'' +
-                ", GovForm='" + govForm + '\'' +
-                ", HeadOfState='" + headOfState + '\'' +
-                ", Capital='" + capital + '\'' +
-                ", Code2='" + code2 + '\'' +
+                "Code ='" + code + '\'' +
+                ", Name ='" + name + '\'' +
+                ", Continent ='" + continent + '\'' +
+                ", Region ='" + region + '\'' +
+                ", SurfaceArea =" + surfaceArea +
+                ", IndepYear =" + indepYear +
+                ", Population =" + population +
+                ", LifeExpectancy =" + lifeExpectancy +
+                ", GNP =" + GNP +
+                ", GNPOld =" + GNPOld +
+                ", LocalName ='" + localName + '\'' +
+                ", GovForm ='" + govForm + '\'' +
+                ", HeadOfState ='" + headOfState + '\'' +
+                ", Capital ='" + capital + '\'' +
+                ", Code2 ='" + code2 + '\'' +
                 '}';
     }
 }
