@@ -6,9 +6,8 @@ services:
     tty: true                   # Allocates terminal
     depends_on:
       - database
-    entrypoint: ["tail", "-f", "/dev/null"]  # Override entrypoint instead of command
     container_name: my-app      #Fixed name for container
-    # Remove the entrypoint/command override - let Dockerfile's ENTRYPOINT run
+    restart: "no"
 
   database:
     build: database/.
